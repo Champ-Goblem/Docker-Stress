@@ -4,11 +4,11 @@ RUN apt update && apt install -y stress-ng
 
 ENV CPU 8
 ENV VM 8
-ENV VM-BYTES 128
+ENV BYTES 128M
 ENV STRESS-CPU true
 ENV STRESS-MEMORY true
 
 COPY start.sh /
 RUN chmod +x /start.sh
 
-entrypoint['/start.sh']
+CMD /start.sh

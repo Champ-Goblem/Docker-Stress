@@ -1,13 +1,15 @@
 #!/bin/bash
 
-if [ $STRESS-CPU == "true" ]; do
+if [ $STRESS-CPU ]; then
   echo "Stressing CPU"
-  ENV=$ENV+" --cpu $CPU"
+  ENV="$ENV --cpu $CPU"
 fi
 
-if [ $STRESS-MEMORY == "true" ]; do
+if [ $STRESS-MEMORY ]; then
   echo "Stressing memory"
-  ENV=$ENV+" --vm $VM --vm-bytes $VM-BYTES"
+  ENV="$ENV --vm $VM --vm-bytes $BYTES"
 fi
+
+echo "stress-ng $ENV"
 
 stress-ng $ENV
